@@ -1,13 +1,36 @@
 import { Outlet } from "react-router-dom";
+import { useDarkMode } from "../../context/DarkModeContext";
+import { Button } from "@mui/material";
 
 export const Layout: React.FC = () => {
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
   return (
-    <div>
-      <nav>Navigation/Header</nav>
-      <main>
+    <div className="flex flex-col bg-neutral-50 dark:bg-neutral-900">
+      {/* Navigation / Header */}
+
+      <nav className="sticky top-0 z-50 bg-white dark:bg-neutral-800 shadow-md border-b border-neutral-200 dark:border-neutral-700">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <span className="text-neutral-900 dark:text-neutral-50">
+            Navigation/Header
+          </span>
+          <Button onClick={toggleDarkMode} variant="outlined">
+            {darkMode ? "☀️ Light" : "🌙 Dark"}
+          </Button>
+        </div>
+      </nav>
+
+      <main className="min-h-screen flex-1">
         <Outlet />
       </main>
-      <footer>Footer</footer>
+
+      {/* Footer */}
+
+      <footer className="bg-neutral-100 dark:bg-neutral-800 border-t border-neutral-200 dark:border-neutral-700 py-6">
+        <div className="container mx-auto px-4 text-neutral-600 dark:text-neutral-400">
+          Footer
+        </div>
+      </footer>
     </div>
   );
 };
