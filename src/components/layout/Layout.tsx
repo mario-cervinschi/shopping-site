@@ -20,7 +20,7 @@ export const Layout: React.FC = () => {
         </div>
       </nav>
 
-      <main className="flex-1 w-full mx-auto">
+      <main className="flex-1 w-full mx-auto min-h-screen">
         <Outlet />
       </main>
 

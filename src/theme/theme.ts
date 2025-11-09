@@ -32,7 +32,19 @@ export const lightTheme = createTheme({
     divider: colors.neutral[200],
   },
   typography: {
-    fontFamily: "Inter, sans-serif",
+    fontFamily: [
+      'Poppins',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 });
 
@@ -67,6 +79,18 @@ export const darkTheme = createTheme({
     divider: colors.neutral[700],
   },
   typography: {
-    fontFamily: "Inter, sans-serif",
+    fontFamily: [
+      'Poppins',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 });

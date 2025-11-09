@@ -6,7 +6,7 @@ export const AppPromoCard = () => {
     <Card
       elevation={3}
       className="min-w-[240px] w-[40vw] max-w-[500px] h-40 flex flex-col items-center justify-center text-center"
-      sx={{ bgcolor: "primary.light", color: "primary.contrastText" }}
+      sx={{ bgcolor: "primary.light", color: "primary" }}
     >
       <CardContent>
         <Download fontSize="large" />
@@ -22,6 +22,7 @@ export const AppPromoCard = () => {
           sx={{
             bgcolor: "white",
             color: "black",
+            borderRadius: "50px",
             "&:hover": { bgcolor: "grey.200" },
           }}
         >

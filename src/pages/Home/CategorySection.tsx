@@ -14,7 +14,7 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
   categories,
 }) => {
   return (
-    <Box className="pt-4">
+    <Box className="pt-8">
       <Typography
         variant="h4"
         component="h2"

@@ -31,7 +31,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({
           darkMode ? "text-white" : "text-gray-800"
         }`}
         sx={{
-          marginTop: 2,
+          marginTop: 1,
         }}
       >
         {description}
@@ -42,11 +42,12 @@ export const HeroContent: React.FC<HeroContentProps> = ({
         className="px-10 text-lg"
         onClick={onButtonClick}
         sx={{
-          marginTop: 1,
+          marginTop: 0.5,
           background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
           "&:hover": {
             transform: "scale(1.05)",
           },
+          borderRadius: "50px",
           transition: "all 0.3s ease",
         }}
       >
