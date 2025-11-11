@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
+const CONNECTION_TOKEN = "token"
+
 export const TestingLoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -11,10 +13,8 @@ export const TestingLoginPage: React.FC = () => {
   const from = location.state?.from?.pathname || "/dashboard";
 
   const handleLogin = () => {
-    login(() => {
-      // go back to the page the user came from or to dashboard
-      navigate(from, { replace: true });
-    });
+    login(CONNECTION_TOKEN);
+    navigate(from, { replace: true });
   };
 
   return (

@@ -33,6 +33,8 @@ interface TabPanelProps {
   value: AuthMode;
 }
 
+const CONNECTION_TOKEN = "token"
+
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
@@ -121,10 +123,10 @@ export const LoginButton: FC = () => {
       }
 
       await userService.login({ email: loginEmail, password: loginPassword });
-      login(() => {
-        setCurrentUser(userService.getCurrentUser());
-        handleDialogClose();
-      });
+      login(CONNECTION_TOKEN
+        // setCurrentUser(userService.getCurrentUser());
+        // handleDialogClose();
+      );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {
@@ -149,10 +151,7 @@ export const LoginButton: FC = () => {
         password: signupPassword,
         confirmPassword: signupConfirmPassword,
       });
-      login(() => {
-        setCurrentUser(userService.getCurrentUser());
-        handleDialogClose();
-      });
+      login(CONNECTION_TOKEN);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Sign up failed");
     } finally {
@@ -164,10 +163,7 @@ export const LoginButton: FC = () => {
     setLoading(true);
     try {
       await userService.logout();
-      logout(() => {
-        setCurrentUser(null);
-        handleMenuClose();
-      });
+      logout();
     } finally {
       setLoading(false);
     }
