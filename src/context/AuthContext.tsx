@@ -1,9 +1,11 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userService, User } from "../services/userService";
 
 interface AuthContextType {
   //   token: string | null;
   isAuthenticated: boolean;
+  user: User | null;
   login: (callback: () => void) => void;
   logout: (callback: () => void) => void;
 }
@@ -13,12 +15,14 @@ export const AuthContext = createContext<AuthContextType | undefined>({
   login: () => {},
   logout: () => {},
   isAuthenticated: false,
+  user: null,
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   //   const [token, setToken] = useState<string | null>(localStorage.getItem("authToken"));
 
   //   useEffect(() => {
@@ -28,6 +32,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   //     }
   //   }, []);
 
+  // Initialize auth state from userService
+  useEffect(() => {
+    const storedUser = userService.getCurrentUser();
+    const isAuth = userService.isAuthenticated();
+    if (isAuth && storedUser) {
+      setIsAuthenticated(true);
+      setUser(storedUser);
+    }
+  }, []);
+
   const navigate = useNavigate();
 
   const login = (callback: () => void) => {
@@ -36,6 +50,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     // TODO - modify with real auth
     setIsAuthenticated(true);
+    const currentUser = userService.getCurrentUser();
+    setUser(currentUser);
     console.log("User logged in");
     callback();
   };
@@ -46,7 +62,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     // TODO - modify with real logout
     setIsAuthenticated(false);
-    console.log("User delogat");
+    setUser(null);
+    console.log("User logged out");
     callback();
   };
 
@@ -55,10 +72,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     //   token,
       login,
       logout,
-      isAuthenticated
+      isAuthenticated,
+      user
     //   isAuthenticated: !!token,
     }),
-    [isAuthenticated]
+    [isAuthenticated, user]
     // [token]
   );
 
