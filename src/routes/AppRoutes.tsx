@@ -9,6 +9,9 @@ import { TestingLoginPage } from "../pages/TestingComponents/TestingLoginPage";
 import { Layout } from "../components/layout/Layout";
 import { ROUTES } from "./routePaths";
 import { TestingCartList } from "../pages/TestingComponents/TestingCartList";
+import { TestingProductPage } from "../pages/TestingComponents/TestingProductPage";
+import { TestingUserPage } from "../pages/TestingComponents/TestingUserPage";
+import { UserEditPage } from "../pages/User/UserEditPage"; 
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -19,6 +22,9 @@ export const AppRoutes: React.FC = () => {
         <Route path={ROUTES.LOGIN} element={<TestingLoginPage />} />
         <Route path={ROUTES.FORBIDDEN} element={<ForbiddenPage />} />
         <Route path={ROUTES.TESTING} element={<TestingCartList />} />
+        <Route path={ROUTES.TESTING_PRODUCT_PAGE} element={<TestingProductPage/>} />
+        <Route path={ROUTES.TESTING_USER_PAGE} element={<TestingUserPage/>} />
+        <Route path={ROUTES.SETTINGS} element={<UserEditPage />} />
 
         {/* --- Private rotues --- */}
         <Route element={<ProtectedRoute />}>

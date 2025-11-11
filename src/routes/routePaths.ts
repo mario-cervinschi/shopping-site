@@ -1,6 +1,8 @@
 export const ROUTES = {
     HOME: '/',
     TESTING: '/testing_cart_list',
+    TESTING_PRODUCT_PAGE: '/testing_product_page',
+    TESTING_USER_PAGE: '/testing_user_page',
     
     // Products
     PRODUCTS: '/products',
@@ -15,6 +17,7 @@ export const ROUTES = {
     // User Account (protected)
     ACCOUNT: '/account',
     PROFILE: '/account/profile',
+    SETTINGS: '/account/edit', // this is not in protected for testing
     ORDERS: '/account/orders',
     ORDER_DETAIL: '/account/orders/:orderId',
     WISHLIST: '/account/wishlist',
