@@ -42,3 +42,20 @@ export interface Review {
   rating: number;
   created_at: string;
 }
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  profileImage: string;
+}
+
+export interface UserPageProps {
+  user: User;
+  orders?: string[];
+  reviews?: string[];
+  returns?: string[];
+  warranties?: string[];
+  about?: string;
+}
